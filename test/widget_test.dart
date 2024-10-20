@@ -1,30 +1,30 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:flutter_app/main.dart';
+import 'package:flutter_app/main.dart'; // Import your main app
+import 'package:flutter_app/widgets/custom_elevated_button.dart'; // Import CustomElevatedButton for testing
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('LoginPage UI elements test', (WidgetTester tester) async {
+    // Build the app and trigger a frame
     await tester.pumpWidget(const MyApp());
+    await tester.pump(); // Ensure the widget tree is fully built
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that the LoginPage contains the correct widgets
+    expect(find.byType(TextField),
+        findsNWidgets(2)); // Should find 2 text fields (email and password)
+    expect(
+        find.text('Email'), findsOneWidget); // Check for the email label text
+    expect(find.text('Password'),
+        findsOneWidget); // Check for the password label text
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Ensure the Login button is found and labeled correctly
+    expect(find.byType(CustomElevatedButton),
+        findsOneWidget); // Check for the Login button
+    expect(find.widgetWithText(CustomElevatedButton, 'Login'),
+        findsOneWidget); // Check if the button has the correct label
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Check the AppBar title separately using its key
+    expect(find.byKey(Key('loginAppBarTitle')),
+        findsOneWidget); // Check if the AppBar has the correct title
   });
 }
