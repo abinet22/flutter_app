@@ -24,7 +24,7 @@ void main() {
         findsOneWidget); // Check if the button has the correct label
 
     // Check the AppBar title separately using its key
-    expect(find.byKey(Key('loginAppBarTitle')),
+    expect(find.byKey(const Key('loginAppBarTitle')),
         findsOneWidget); // Check if the AppBar has the correct title
   });
 }
