@@ -9,8 +9,8 @@ Widget buildCustomElevatedButtonUseCase(BuildContext context) {
   return CustomElevatedButton(
     label: 'Login', // Provide a value for the required 'label' parameter
     onPressed: () {
-      // Provide a basic action for the 'onPressed' parameter (can be empty for now)
-      print('Button Pressed');
+      // Use debugPrint instead of print in production code
+      debugPrint('Button Pressed');
     },
     color: Colors.green, // You can specify other parameters if needed
     textColor: Colors.white,
