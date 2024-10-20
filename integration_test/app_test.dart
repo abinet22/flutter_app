@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:flutter_app/main.dart'; // Import your app's main file
+
 import 'package:flutter_app/screens/login_page.dart'; // Import LoginPage
 import 'package:flutter_app/widgets/custom_text_field.dart'; // Import the custom textfeild
 
@@ -24,7 +24,7 @@ void main() {
         findsOneWidget); // Check if the 'Password' label is present
 
     // Step 3: Check if the Login button is present
-    expect(find.byKey(Key('loginButton')),
+    expect(find.byKey(const Key('loginButton')),
         findsOneWidget); // Use key to find the button
 
     // Step 4: Enter text in the Email and Password fields
@@ -34,7 +34,7 @@ void main() {
         'password123'); // Enter text in Password field
 
     // Step 5: Tap the Login button
-    await tester.tap(find.byKey(Key('loginButton')));
+    await tester.tap(find.byKey(const Key('loginButton')));
 
     // Step 6: Wait for any animations or transitions
     await tester.pumpAndSettle();
